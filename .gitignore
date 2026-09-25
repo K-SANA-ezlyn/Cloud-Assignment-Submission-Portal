@@ -1,0 +1,40 @@
+# ===== SECRETS (never commit real credentials) =====
+.env
+.env.local
+.env.production
+*.pem
+*.key
+serviceAccountKey*.json
+
+# ===== PYTHON =====
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+
+# ===== NODE =====
+node_modules/
+frontend/dist/
+*.local
+
+# ===== APPLICATION DATA (local-mode storage) =====
+uploads/
+*.db
+*.sqlite3
+portal.db
+instance/
+
+# large generated test asset (recreate via scripts/make_demo_files.py)
+sample_files/oversized-demo.pdf
+
+# ===== OS / EDITOR =====
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
