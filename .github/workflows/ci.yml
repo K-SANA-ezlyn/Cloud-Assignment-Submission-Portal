@@ -1,0 +1,50 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  backend:
+    name: Backend tests (pytest)
+    runs-on: ubuntu-latest
+    env:
+      ENVIRONMENT: test
+      DATABASE_URL: sqlite:///./ci_test.db
+      UPLOAD_DIR: ./ci_uploads
+      STORAGE_PROVIDER: local
+      SECRET_KEY: ci-only-secret-key-not-real
+      TEACHER_INVITE_CODE: CI-INVITE
+      CORS_ORIGINS: http://localhost:5173
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: pip install -r requirements.txt -r requirements-dev.txt
+      - name: Run test suite
+        run: pytest -v
+      - name: Smoke-check app import
+        run: python -c "from backend.app import app; print('routes:', len(app.routes))"
+
+  frontend:
+    name: Frontend build (vite)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - name: Install dependencies
+        run: npm ci
+      - name: Build
+        run: npm run build
