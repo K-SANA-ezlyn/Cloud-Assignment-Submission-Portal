@@ -113,6 +113,7 @@ class AssignmentOut(AssignmentCreate):
 class SubmissionOut(BaseModel):
     id: str
     assignment_id: str
+    assignment_title: str = ""
     student_id: str
     student_name: str = ""
     file_name: str

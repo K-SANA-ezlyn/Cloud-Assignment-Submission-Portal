@@ -55,7 +55,7 @@ export default function MySubmissionsPage() {
             <tbody>
               {rows.map((s) => (
                 <tr key={s.id}>
-                  <td><Link to={`/assignments/${s.assignment_id}`}>Assignment</Link></td>
+                  <td><Link to={`/assignments/${s.assignment_id}`}>{s.assignment_title || 'Assignment'}</Link></td>
                   <td>{s.file_name}<div className="muted small">{formatBytes(s.file_size)}</div></td>
                   <td>#{s.attempt_no}</td>
                   <td>{formatDateTime(s.submitted_at)}</td>

@@ -327,6 +327,7 @@ def _submission_out(s: Submission, student_name: str) -> SubmissionOut:
     return SubmissionOut(
         id=s.id,
         assignment_id=s.assignment_id,
+        assignment_title=s.assignment.title if s.assignment is not None else "",
         student_id=s.student_id,
         student_name=student_name,
         file_name=s.file_name,

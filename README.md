@@ -192,10 +192,10 @@ Cloud-Assignment-Submission-Portal/
 ├── tests/                    # pytest suite (49 tests) + conftest
 ├── scripts/                  # smoke_test.py (17-check live E2E)
 ├── sample_files/             # dummy submission files
-├── screenshots/              # 27-item proof checklist (see docs/github-proof-plan.md)
+├── screenshots/              # app proof screenshots
 ├── docs/                     # architecture, concepts, api, db, storage, security,
 │                             # scalability, failure handling, deployment, test plan,
-│                             # local guide, github plan, report, interview prep, resume
+│                             # local guide, report
 ├── reports/                  # manual test results + project report copy
 ├── .github/workflows/ci.yml  # pytest + frontend build
 ├── .env.example / .env.cloud.example
@@ -287,10 +287,9 @@ transactional workflow, retry policies and idempotency design:
 
 ## Screenshots
 
-Capture the 27-item proof list into `screenshots/` with the professional
-filenames given in `docs/github-proof-plan.md` (folder structure, login,
-dashboards, upload, storage object, DB record, grading, RBAC denial, tests,
-deployment, commits, README).
+The `screenshots/` folder holds live app evidence — login, registration,
+teacher & student dashboards, assignment list and details, and a successful
+upload with on-time status (see `screenshots/README.md`).
 
 ## Results
 
